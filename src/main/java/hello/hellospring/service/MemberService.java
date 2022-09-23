@@ -3,15 +3,32 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service //스프링이 올라올때 서비스라고인식후 컨테이너에 올려준다.
 public class MemberService {
+    //클래스를 선택한 상태에서 control+shift+t 키의 조합으로 테스트클래스를 쉽게 만들 수 있다.
+
     //서비스라 이름이 조인, findMembers 등 이름이
     //비즈니스에 가까워진다.
     //서비스는 비즈니스 처리
-    private final MemberRepository memberRepository=new MemoryMemberRepository();
+
+    //private final MemberRepository memberRepository=new MemoryMemberRepository();
+    //여기있는 respository랑 테스트에서 사용하는 repository가 다르다.
+    //new 로 각각 생성했다.
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+
 
     //회원가입
     public Long join(Member member)
