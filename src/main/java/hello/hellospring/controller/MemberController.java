@@ -12,7 +12,10 @@ public class MemberController {
 
     //의존관계를 주입한다. 스프링이 해준다.
     @Autowired //멤버 서비스를 스프링 컨테이너가 자동을 연겨해준다.(컴포넌트 스캔 방식)
+    //private MemberService memberService ==>필드주입방법
     //서비스 안에 Component라는 annotation이 있다.
+    //Dependency Injection을 통한방법
+
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }

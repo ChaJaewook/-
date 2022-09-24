@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service //스프링이 올라올때 서비스라고인식후 컨테이너에 올려준다.
+//@Service //스프링이 올라올때 서비스라고인식후 컨테이너에 올려준다.
 public class MemberService {
     //클래스를 선택한 상태에서 control+shift+t 키의 조합으로 테스트클래스를 쉽게 만들 수 있다.
 
@@ -23,7 +23,8 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //@Autowired
+    //생성자 주입
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
