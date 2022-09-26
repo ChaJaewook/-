@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>이름</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--thymeleaf가 알아서 루프를 돌아준다-->
+      <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+        <!-- getter, setter 접근 방식으로 값을 가져와서 출력해준다.-->
+      </tr>
+      <!--template언어-->
+      <!--$members를 읽어 모델안의 값을 읽는다.-->
+      <!-- 메모리 안에 있기에 데이터가 일시적이다.-->
+
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
