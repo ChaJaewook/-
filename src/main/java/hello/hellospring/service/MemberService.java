@@ -5,11 +5,14 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 //@Service //스프링이 올라올때 서비스라고인식후 컨테이너에 올려준다.
+//jpa를 사용하려면 항상 Transaction이 필요하다
+@Transactional
 public class MemberService {
     //클래스를 선택한 상태에서 control+shift+t 키의 조합으로 테스트클래스를 쉽게 만들 수 있다.
 
