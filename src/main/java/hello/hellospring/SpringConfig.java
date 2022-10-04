@@ -13,14 +13,23 @@ import javax.sql.DataSource;
 public class SpringConfig {
     private DataSource dataSource;
     private EntityManager em;
+
+
+
+    /*@Autowired
+        public SpringConfig(EntityManager em) {
+            this.em = em;
+        }
+
+
+        public SpringConfig(DataSource dataSource) {
+            this.dataSource = dataSource;
+        }*/
+    private final MemberRepository memberRepository; //구현체에서 생성자를 생성하면 알아서 생긴다.
+
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
-    }
-
-
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
@@ -29,10 +38,11 @@ public class SpringConfig {
         //이렇게 하면 스프링이 Configuration을 읽고
         //스프링 빈에 호출, 등록을 해준다.
         //Controller는 따로 Bean화 시킬 수 없다.
-        return new MemberService(memberRepository());
+        //return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
+    /*@Bean
     public MemberRepository memberRepository()
     {
         //return new MemoryMemberRepository();
@@ -41,5 +51,5 @@ public class SpringConfig {
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
         return new JpaMemberRespository(em);
-    }
+    }*/
 }
